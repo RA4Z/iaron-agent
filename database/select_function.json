@@ -1,0 +1,50 @@
+[
+    {
+        "input": "Título: Roteiro de Atrasos da Usinagem\nDescrição: Automatização do processo de verificação de itens atrasados da usinagem para alternadores\nSolicitado por: Nicolas Gabriel Massaia Camacho\nDesenvolvido por: Robert Aron Zimmermann\n\nObservações:\nSAP deve estar com o idioma PT selecionado\n\n\nProcedimento:\n\nTransação COHV\nInserir variante \"ATRASO GTA NIC\"\nEscrever no campo \"Layout\" o texto \"/USIN_ROTEI\"\nexecutar\nescrever tabela na planilha \"Roteiro.xlsm\" a partir da coluna 2\n\nEnviar E-mail para usuários que estão no bloco de notas chamado \"Destinatarios.txt\", estão separados por \";\"\nO título do E-mail deve ser \"Atrasos GTA\"\nNo corpo do E-mail deve estar escrito:\n“Bom dia,\nSegue atrasos GTA, gentileza informar motivo e entrega:”\nAbrir a planilha \"Roteiro.xlsm\" para visualização do usuário",
+        "output": "select_iaron_developer"
+    },
+    {
+        "input": "Título: Emergência Workflow\nDescrição: Foram realizadas alterações em massa no sistema SAP, devido a isso a automatização foi desenvolvida para retirar os materiais do Workflow\nSolicitado por: Pedro Nardi Delvaux Ferreira\nDesenvolvido por: Robert Aron Zimmermann\n\nObservações:\nAdicionar Tratativas de erro para evitar que o código trave\nSAP deve estar com o idioma PT selecionado\n\n\nProcedimento:\n\nAcessar transação SBWP\nfazer os comandos abaixo para selecionar a caixa de Entrada do Workflow:\nsession.findById(\"wnd[0]/usr/cntlSINWP_CONTAINER/shellcont/shell/shellcont[0]/shell\").expandNode \"          2\"\nsession.findById(\"wnd[0]/usr/cntlSINWP_CONTAINER/shellcont/shell/shellcont[0]/shell\").selectedNode = \"          5\"\nsession.findById(\"wnd[0]/usr/cntlSINWP_CONTAINER/shellcont/shell/shellcont[0]/shell\").topNode = \"          1\"\narmazenar a tabela atual em uma variável\n\n\nPara cada linha a partir da linha 2 da planilha \"Materiais.xlsx\":\narmazenar os valores de \"material\" e \"centro\", colunas 1 e 3 respectivamente\nNa tabela atual pressionar o botão \"&FIND\"\nno campo \"Term.pesq.:\" escrever o \"material\"\nna combo box \"Direção da pesquisa\" selecionar \"desde início tabela p/baixo\"\nClicar em \"OK\"\nSe aparecer escrito \"Nenhuma ocorrência encontrada\" então:\nClicar em \"Cancelar\"\nEscrever na coluna 12 da planilha \"Não encontrado\"\navançar para a próxima linha da planilha\n\nSenão:\nClicar em \"Cancelar\"\nClicar duas vezes na linha selecionada da tabela\nNo campo \"Centro\" escrever a variável \"centro\"\nClicar em \"Avançar\"\nexecutar o comando: session.findById(\"wnd[0]/usr/tabsTABSPR1/tabpSP12\").select()\nEnquanto não aparecer escrito \"Este work item\" no título da janela atual:\npressionar enter\nverificar se a janela atual é igual a 1, caso seja então clicar em \"Sim\"\n\nCaso no rodapé apareça escrito \"já eliminado\" então registrar na coluna 12 que já foi eliminado e avançar para a próxima linha\nQuando aparecer escrito então pressionar o botão \"Workflow continua\"\nEscrever na coluna 12 da planilha \"Sucesso\"\navançar para a próxima linha da planilha",
+        "output": "select_iaron_developer"
+    },
+    {
+        "input": "Título: Estornar Apontamento de Operação\nDescrição: Esta automatização realiza o estorno de operações na CO13\nSolicitado por: Valmir Junckes\nDesenvolvido por: Robert Aron Zimmermann\n\nCriar função que aceite como parâmetros \"order\" e \"operation\"\nAcessar transação CO13\nescrever no campo \"Order\" o parâmetro \"order\"\nescrever no campo \"Operação\" o parâmetro \"operation\"\nexecutar transação\nSe \"Confirmar ordem\" estiver escrito no título da tela atual então pressionar no botão \"Sim\"\nSe a janela atual for igual a 1 então:\nPressionar o botão \"Gravar\"\nfechar o arquivo word aberto\nPressionar o botão \"Voltar\"",
+        "output": "select_iaron_developer"
+    },
+    {
+        "input": "Selecionar a transação ME52N no SAP\npressionar o botão \"Outra requisição de compra\"\nescrever no campo \"Requisição de compra\" o texto \"numeroTeste\"\nPressionar o botão \"Outro documento\"\nSe a janela atual do SAP for 1 então pressionar o botão \"Não\"",
+        "output": "select_iaron_run_code"
+    },
+    {
+        "input": "Selecionar Transação COOIS\nInserir a variante \"MATERIAIS GTA\"\nexecutar a transação\npercorrer a tabela do SAP inserindo em uma variável todas as ordens",
+        "output": "select_iaron_run_code"
+    },
+    {
+        "input": "Selecionar transação ME5A\ninserir a variante \"WENLOG\"\nexecutar\nPressionar o botão \"Selecionar layout...\"\npercorrer toda a tabela, salvando em um dicionário os campos: \"reqC\",\"dataRem.\",\"responsavel\"",
+        "output": "select_iaron_run_code"
+    },
+    {
+        "input": "Acessar COHV inserir a variante ZTPP e executa, por fim extrair dados da coluna AUFNR",
+        "output": "select_iaron_run_code"
+    },
+    {
+        "input": "(Importar funções os e sys no começo do código) Acessar Transação CN47N, colocar o Elemento PEP \"120-2300964-21\", escolher o Layout \"/INI_ACABA\" e executar",
+        "output": "select_iaron_run_code"
+    },
+    {
+        "input": "Como fazer o planejamento de Alternadores?",
+        "output": "select_chatbot_ppc"
+    },
+    {
+        "input": "criar uma ordem de produ\\u00e7\\u00e3o",
+        "output": "select_chatbot_ppc"
+    },
+    {
+        "input": "Como posso verificar a ordem de produ\\u00e7\\u00e3o dos materiais em massa?",
+        "output": "select_chatbot_ppc"
+    },
+    {
+        "input": "Quem é você?",
+        "output": "select_chatbot_ppc"
+    }
+]
