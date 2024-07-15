@@ -12,16 +12,12 @@ def run_system(user_input):
 
 
 if __name__ == '__main__':
-    user_input = 'Resumo sobre Inflação, enviar de forma oculta para global@email.com'
+    user_input = 'Resumo sobre Inflação, enviar de forma oculta para Robert Aron Zimmermann'
     response = run_system(user_input).replace('`', '').replace('json', '').strip()
 
     try:
         response = json.loads(response)
-        print(response['to'])
-        print(response['cc'])
-        print(response['bcc'])
-        print(response['subject'])
-        print(response['body'])
+        print(response)
 
     except json.JSONDecodeError as e:
         print(f"Erro ao analisar JSON: {e}")
