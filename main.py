@@ -1,27 +1,182 @@
-import json
-import functions
-from artificial_intelligence.gemini import decidir_tarefa
-
-def run_system(user_input: str):
-    data = []
-    inputs = json.load(open('database/select_function.json', 'r', encoding='utf-8'))
-    for value in inputs:
-        data.append(f"input: {value['input']}")
-        data.append(f"output: {value['output']}")
-
-    return decidir_tarefa(f'Cite o nome da função correta baseada no input do usuário a seguir: {user_input}', data)
+import flet as ft
+from ai_caller import run_system, choose
 
 
-def choose(func: str, user_input: str):
-    try:
-        call_function = getattr(functions, func.strip())
-        return call_function(user_input)
-    except Exception as e:
-        return f'Ocorreu o erro: {str(e)} ao tentar invocar a função {func}!'
+class Message:
+    def __init__(self, user_name: str, text: str, message_type: str):
+        self.user_name = user_name
+        self.text = text
+        self.message_type = message_type
+
+
+def get_avatar_color(user_name: str):
+    colors_lookup = [
+        ft.colors.AMBER,
+        ft.colors.BLUE,
+        ft.colors.BROWN,
+        ft.colors.CYAN,
+        ft.colors.GREEN,
+        ft.colors.INDIGO,
+        ft.colors.LIME,
+        ft.colors.ORANGE,
+        ft.colors.PINK,
+        ft.colors.PURPLE,
+        ft.colors.RED,
+        ft.colors.TEAL,
+        ft.colors.YELLOW,
+    ]
+    return colors_lookup[hash(user_name) % len(colors_lookup)]
+
+
+def get_initials(user_name: str):
+    if user_name:
+        return user_name[:1].capitalize()
+    else:
+        return "Desconhecido"  # or any default value you prefer
+
+
+class ChatMessage(ft.Row):
+    def __init__(self, message: Message):
+        super().__init__()
+        self.vertical_alignment = ft.CrossAxisAlignment.START
+        self.controls = [
+            ft.CircleAvatar(
+                content=ft.Text(get_initials(message.user_name)),
+                color=ft.colors.WHITE,
+                bgcolor=get_avatar_color(message.user_name),
+            ),
+            ft.Column(
+                [
+                    ft.Text(message.user_name, weight="bold"),
+                    ft.Text(message.text, selectable=True),
+                ],
+                tight=True,
+                spacing=5,
+            ),
+        ]
+
+
+def main(page: ft.Page):
+    page.horizontal_alignment = ft.CrossAxisAlignment.STRETCH
+    page.title = "IAron Agent AI"
+
+    def join_chat_click(e):
+        if not join_user_name.value:
+            join_user_name.error_text = "Nome não pode ser em branco!"
+            join_user_name.update()
+        else:
+            page.session.set("user_name", join_user_name.value)
+            page.dialog.open = False
+            new_message.prefix = ft.Text(f"{join_user_name.value}: ")
+            page.pubsub.send_all(
+                Message(
+                    user_name=join_user_name.value,
+                    text=f"{join_user_name.value} se juntou ao chat.",
+                    message_type="login_message",
+                )
+            )
+            page.update()
+
+    def send_message_click(e):
+        actual_message = new_message.value
+        if new_message.value != "":
+            page.pubsub.send_all(
+                Message(
+                    page.session.get("user_name"),
+                    new_message.value,
+                    message_type="chat_message",
+                )
+            )
+            new_message.value = ""
+            new_message.focus()
+            page.update()
+
+            response = run_system(actual_message)
+            if "select_chatbot_ppc" not in response:
+                page.pubsub.send_all(
+                    Message(
+                        "IAron Agent",
+                        f'Executando a função {response.strip()}...',
+                        message_type="chat_message",
+                    )
+                )
+                page.update()
+
+            page.pubsub.send_all(
+                Message(
+                    "IAron Agent",
+                    choose(response, actual_message),
+                    message_type="chat_message",
+                )
+            )
+            page.update()
+
+    def on_message(message: Message):
+        global m
+        if message.message_type == "chat_message":
+            m = ChatMessage(message)
+        elif message.message_type == "login_message":
+            m = ft.Text(message.text, italic=True, color=ft.colors.BLACK45, size=12)
+        chat.controls.append(m)
+        page.update()
+
+    page.pubsub.subscribe(on_message)
+
+    # A dialog asking for a user display name
+    join_user_name = ft.TextField(
+        label="Insira seu nome para se juntar ao Chat",
+        autofocus=True,
+        on_submit=join_chat_click,
+    )
+    page.dialog = ft.AlertDialog(
+        open=True,
+        modal=True,
+        title=ft.Text("Bem vindo(a)!"),
+        content=ft.Column([join_user_name], width=300, height=70, tight=True),
+        actions=[ft.ElevatedButton(text="Entrar no Chat", on_click=join_chat_click)],
+        actions_alignment=ft.MainAxisAlignment.END,
+    )
+
+    # Chat messages
+    chat = ft.ListView(
+        expand=True,
+        spacing=10,
+        auto_scroll=True,
+    )
+
+    # A new message entry form
+    new_message = ft.TextField(
+        hint_text="Escreva seu Comando...",
+        autofocus=True,
+        shift_enter=True,
+        min_lines=1,
+        max_lines=5,
+        filled=True,
+        expand=True,
+        on_submit=send_message_click,
+    )
+
+    # Add everything to the page
+    page.add(
+        ft.Container(
+            content=chat,
+            border=ft.border.all(1, ft.colors.OUTLINE),
+            border_radius=5,
+            padding=10,
+            expand=True,
+        ),
+        ft.Row(
+            [
+                new_message,
+                ft.IconButton(
+                    icon=ft.icons.SEND_ROUNDED,
+                    tooltip="Enviar Comando",
+                    on_click=send_message_click,
+                ),
+            ]
+        ),
+    )
 
 
 if __name__ == '__main__':
-    user_input = """"""
-    response = run_system(user_input)
-    print(f'Executando a função {response.strip()}...')
-    print(choose(response, user_input))
+    ft.app(target=main)
