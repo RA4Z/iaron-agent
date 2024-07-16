@@ -39,11 +39,25 @@ class ChatMessage(ft.Row):
     def __init__(self, message: Message):
         super().__init__()
         self.vertical_alignment = ft.CrossAxisAlignment.START
+
+        # Define o conteúdo do CircleAvatar com base no usuário
+        avatar_content = (
+            ft.Image(
+                src="chatbot.png",
+                fit=ft.ImageFit.COVER
+            )
+            if message.user_name == "IAron Agent"
+            else ft.Text(get_initials(message.user_name))
+        )
+
+        # Define a cor de fundo do CircleAvatar com base no usuário
+        avatar_bgcolor = None if message.user_name == "chatbot" else get_avatar_color(message.user_name)
+
         self.controls = [
             ft.CircleAvatar(
-                content=ft.Text(get_initials(message.user_name)),
+                content=avatar_content,
                 color=ft.colors.WHITE,
-                bgcolor=get_avatar_color(message.user_name),
+                bgcolor=avatar_bgcolor,
             ),
             ft.Column(
                 [
@@ -54,7 +68,6 @@ class ChatMessage(ft.Row):
                 spacing=5,
             ),
         ]
-
 
 def main(page: ft.Page):
     page.horizontal_alignment = ft.CrossAxisAlignment.STRETCH
