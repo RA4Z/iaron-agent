@@ -1,7 +1,6 @@
 from Systems.IAron.gemini_config import develop_code
 from Systems.IAron.functions import retornar_codigo, pegar_texto_externo, copiar_pasta, cadastrar_worksheet, send_data
 import time
-import subprocess
 
 
 def run_automation(user_input: str):

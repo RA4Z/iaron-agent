@@ -10,7 +10,7 @@ def select_iaron_developer(user_input: str):
         return f'Arquivo criado com sucesso em {response}'
 
 
-def select_iaron_run_code(user_input: str):
+def select_iaron_dev_code(user_input: str):
     from Systems.IAron.gemini import run_automation
     response = run_automation(f""" Observação: Importar funções os e sys no começo do código\n {user_input}""")
     if response != '':
