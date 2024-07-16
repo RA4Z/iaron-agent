@@ -51,7 +51,7 @@ class ChatMessage(ft.Row):
         )
 
         # Define a cor de fundo do CircleAvatar com base no usuário
-        avatar_bgcolor = None if message.user_name == "chatbot" else get_avatar_color(message.user_name)
+        avatar_bgcolor = None if message.user_name == "IAron Agent" else get_avatar_color(message.user_name)
 
         self.controls = [
             ft.CircleAvatar(
@@ -62,7 +62,11 @@ class ChatMessage(ft.Row):
             ft.Column(
                 [
                     ft.Text(message.user_name, weight="bold"),
-                    ft.Text(message.text, selectable=True),
+                    ft.Markdown(
+                        message.text,
+                        selectable=True,
+                        extension_set=ft.MarkdownExtensionSet.GITHUB_WEB,
+                    )
                 ],
                 tight=True,
                 spacing=5,
@@ -96,7 +100,7 @@ def main(page: ft.Page):
             page.pubsub.send_all(
                 Message(
                     page.session.get("user_name"),
-                    new_message.value,
+                    f'{new_message.value.strip()}',
                     message_type="chat_message",
                 )
             )
@@ -118,7 +122,7 @@ def main(page: ft.Page):
             page.pubsub.send_all(
                 Message(
                     "IAron Agent",
-                    choose(response, actual_message),
+                    f'{choose(response, actual_message).strip()}',
                     message_type="chat_message",
                 )
             )
