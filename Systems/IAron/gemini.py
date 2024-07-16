@@ -20,7 +20,6 @@ def run_automation(user_input: str):
             open(f'C:\\IAron\\{file}\\README.md', 'w', encoding="UTF-8").write(f"{documentation}")
             cadastrar_worksheet(output, destino)
             send_data(user_input, output, codigo, documentation)
-            subprocess.run(['explorer', destino])
             return destino
 
         except Exception as e:

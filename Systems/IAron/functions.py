@@ -48,7 +48,7 @@ def cadastrar_doc(documentation: str, path: str):
 
 def cadastrar_worksheet(output: str, path: str):
     try:
-        match = re.search(r"ExcelHandler\('(.*?)'\)", output)
+        match = re.search(r"ExcelHandler\(f'.*?\\\\(.*?)'\)", output)
         if match:
             nome_arquivo = match.group(1)
             # Verifica a extensão do arquivo e cria a planilha com a biblioteca correta
