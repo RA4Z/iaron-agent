@@ -1,6 +1,6 @@
 import flet as ft
 from ai_caller import run_system, choose
-
+from upload_doc import extract_info
 
 class Message:
     def __init__(self, user_name: str, text: str, message_type: str):
@@ -77,6 +77,7 @@ class ChatMessage(ft.Row):
 def main(page: ft.Page):
     page.horizontal_alignment = ft.CrossAxisAlignment.STRETCH
     page.title = "IAron Agent AI"
+    arquivos_carregados = []
 
     def join_chat_click(e):
         if not join_user_name.value:
@@ -96,6 +97,11 @@ def main(page: ft.Page):
             page.update()
 
     def send_message_click(e):
+        file_prompt = ''
+        if arquivos_carregados:
+            for file in arquivos_carregados:
+                file_prompt = file_prompt + extract_info(file)
+
         actual_message = new_message.value
         if new_message.value != "":
             page.pubsub.send_all(
@@ -123,7 +129,7 @@ def main(page: ft.Page):
             page.pubsub.send_all(
                 Message(
                     "IAron Agent",
-                    f'{choose(response, actual_message).strip()}',
+                    f'{choose(response, f"{actual_message} {file_prompt}").strip()}',
                     message_type="chat_message",
                 )
             )
@@ -174,6 +180,34 @@ def main(page: ft.Page):
         on_submit=send_message_click,
     )
 
+    def upload_arquivos(e: ft.FilePickerResultEvent):
+        nonlocal arquivos_carregados  # Modifica a lista externa
+        if e.files is not None:
+            arquivos_permitidos = [arquivo for arquivo in e.files if arquivo.name.lower().endswith(('.docx', '.pdf'))]
+
+            if arquivos_permitidos:
+                arquivos_carregados.extend(arquivos_permitidos)  # Adiciona à lista
+                atualizar_lista_arquivos()
+
+    def atualizar_lista_arquivos():
+        row_arquivos.controls.clear()
+        for i, arquivo in enumerate(arquivos_carregados):
+            # Cria um botão para cada arquivo
+            botao_arquivo = ft.ElevatedButton(
+                text=arquivo.name,
+                # Remove o arquivo da lista quando o botão for clicado
+                on_click=lambda e, indice=i: remover_arquivo(indice)
+            )
+            row_arquivos.controls.append(botao_arquivo)
+        page.update()
+
+    def remover_arquivo(indice):
+        del arquivos_carregados[indice]
+        atualizar_lista_arquivos()
+
+    # Cria o ft.Row para exibir os arquivos
+    row_arquivos = ft.Row(wrap=True)  # Permite quebra de linha se necessário
+
     # Add everything to the page
     page.add(
         ft.Container(
@@ -183,8 +217,14 @@ def main(page: ft.Page):
             padding=10,
             expand=True,
         ),
+        row_arquivos,
         ft.Row(
             [
+                ft.IconButton(
+                    icon=ft.icons.UPLOAD_FILE,
+                    tooltip="Upload de arquivo",
+                    on_click=lambda _: file_picker.pick_files(allow_multiple=True),
+                ),
                 new_message,
                 ft.IconButton(
                     icon=ft.icons.SEND_ROUNDED,
@@ -194,6 +234,9 @@ def main(page: ft.Page):
             ]
         ),
     )
+    file_picker = ft.FilePicker(on_result=upload_arquivos)
+    page.overlay.append(file_picker)
+    page.update()
 
 
 if __name__ == '__main__':
