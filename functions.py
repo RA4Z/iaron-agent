@@ -4,8 +4,7 @@ import getpass
 
 def select_iaron_developer(user_input: str):
     from Systems.IAron.gemini import run_automation
-    response = run_automation(user_input)
-    print(response)
+    return run_automation(user_input)
 
 def select_iaron_run_code(user_input: str):
     from Systems.IAron.gemini import run_automation
@@ -28,3 +27,7 @@ def select_chatbot_ppc(user_input: str):
             print(f'Ocorreu o erro: {response.status_code}!')
     except Exception as e:
         print(f'Ocorreu o erro {e}!')
+
+def select_send_email(user_input: str):
+    from Systems.MailSender.main import run_system
+    return run_system(user_input)

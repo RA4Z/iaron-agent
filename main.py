@@ -21,6 +21,7 @@ def choose(func: str, user_input: str):
 
 
 if __name__ == '__main__':
-    user_input = 'Olá, quem é vc?'
+    user_input = """"""
     response = run_system(user_input)
+    print(f'Executando a função {response.strip()}...')
     print(choose(response, user_input))
