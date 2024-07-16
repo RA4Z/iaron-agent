@@ -39,7 +39,7 @@ class ChatMessage(ft.Row):
     def __init__(self, message: Message):
         super().__init__()
         self.vertical_alignment = ft.CrossAxisAlignment.START
-
+        self.wrap = True
         # Define o conteúdo do CircleAvatar com base no usuário
         avatar_content = (
             ft.Image(
@@ -70,8 +70,9 @@ class ChatMessage(ft.Row):
                 ],
                 tight=True,
                 spacing=5,
-            ),
+            )
         ]
+
 
 def main(page: ft.Page):
     page.horizontal_alignment = ft.CrossAxisAlignment.STRETCH
