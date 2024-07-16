@@ -3,8 +3,9 @@ import requests
 import getpass
 
 def select_iaron_developer(user_input: str):
-    from Systems.IAron.gemini import run_automation
-    response = run_automation(user_input)
+    from Systems.IAron.gemini import run_automation, get_ai_input
+    tuned_input = get_ai_input(user_input)
+    response = run_automation(tuned_input)
     if response != '':
         subprocess.run(['python', f'{response}/main.py'], check=True)
         return f'Arquivo criado com sucesso em {response}'

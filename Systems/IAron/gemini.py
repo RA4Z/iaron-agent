@@ -1,6 +1,14 @@
-from Systems.IAron.gemini_config import develop_code
+from Systems.IAron.gemini_config import develop_code, develop_input
 from Systems.IAron.functions import retornar_codigo, pegar_texto_externo, copiar_pasta, cadastrar_worksheet, send_data
 import time
+
+def get_ai_input(user_input: str):
+    try:
+        return develop_input(user_input)
+
+    except Exception as e:
+        print(e)
+        return user_input
 
 
 def run_automation(user_input: str):
