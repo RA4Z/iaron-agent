@@ -1,5 +1,6 @@
 import flet as ft
 import getpass
+import subprocess
 from ai_caller import run_system, choose
 from upload_doc import extract_info
 from languages.translation import Language
@@ -204,11 +205,29 @@ def main(page: ft.Page):
         row_arquivos.controls.clear()
         for i, arquivo in enumerate(arquivos_carregados):
             botao_arquivo = ft.ElevatedButton(
-                text=arquivo.name,
-                on_click=lambda e, indice=i: remover_arquivo(indice)
+                content=ft.Row(
+                    controls=[
+                        ft.Text(arquivo.name),
+                        ft.IconButton(
+                            icon=ft.icons.DELETE,
+                            on_click=lambda e, indice=i: remover_arquivo(indice),
+                            icon_color=ft.colors.RED  # Define a cor do ícone
+                        ),
+                    ],
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN  # Alinha o texto e o ícone
+                ),
+                on_click=lambda e, indice=i: abrir_arquivo(indice)
             )
             row_arquivos.controls.append(botao_arquivo)
         page.update()
+
+    def abrir_arquivo(indice):
+        caminho_completo = arquivos_carregados[indice].path
+        try:
+            subprocess.run(["start", caminho_completo], shell=True)  # Para Windows
+
+        except FileNotFoundError:
+            print(f"Erro ao abrir o arquivo: {caminho_completo}")
 
     def remover_arquivo(indice):
         del arquivos_carregados[indice]
