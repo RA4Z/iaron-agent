@@ -43,7 +43,7 @@ class ChatMessage(ft.Row):
         # Define o conteúdo do CircleAvatar com base no usuário
         avatar_content = (
             ft.Image(
-                src="chatbot.png",
+                src="assets/chatbot.png",
                 fit=ft.ImageFit.COVER
             )
             if message.user_name == "IAron Agent"
@@ -140,7 +140,7 @@ def main(page: ft.Page):
         if message.message_type == "chat_message":
             m = ChatMessage(message)
         elif message.message_type == "login_message":
-            m = ft.Text(message.text, italic=True, color=ft.colors.BLACK45, size=12)
+            m = ft.Text(message.text, italic=True, size=12)
         chat.controls.append(m)
         page.update()
 
@@ -234,6 +234,21 @@ def main(page: ft.Page):
                 ),
             ]
         ),
+        ft.Container(
+            content=ft.Row(
+                controls=[
+                    ft.Image(src="Systems/IAron/images/logo.png", width=100, height=50),
+                    ft.Text(
+                        value='IAron Agent AI, Desenvolvido e Prototipado por Robert Aron Zimmermann',
+                        size=12,
+                        weight=ft.FontWeight.NORMAL,
+                        text_align=ft.TextAlign.CENTER,
+                    ),
+                ],
+                alignment=ft.MainAxisAlignment.CENTER,
+            ),
+            padding=ft.padding.only(top=10, bottom=10, left=20, right=20),
+        )
     )
     file_picker = ft.FilePicker(on_result=upload_arquivos)
     page.overlay.append(file_picker)
