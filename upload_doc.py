@@ -1,6 +1,18 @@
-import flet as ft
 import PyPDF2
 from docx import Document
+
+def extract_txt(filename: str):
+    texto = ''
+    try:
+        with open(filename, 'r', encoding='utf-8') as arquivo:
+            linhas = arquivo.readlines()
+            for linha in linhas:
+                texto = texto + linha
+
+    except FileNotFoundError:
+        print("Arquivo não encontrado.")
+
+    return texto
 
 def extract_docx(filename: str):
     try:
@@ -34,3 +46,10 @@ def extract_info(file):  # Corrigido: recebe FilePickerFile
 
     if file.name.endswith(".pdf"):  # Acessa o nome usando file.name
         return extract_pdf(file.path)  # Passa o caminho do arquivo para extract_pdf
+
+    if file.name.endswith(".txt"):  # Acessa o nome usando file.name
+        return extract_txt(file.path)  # Passa o caminho do arquivo para extract_txt
+
+
+if __name__ == '__main__':
+    pass
