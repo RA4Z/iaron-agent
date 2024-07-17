@@ -54,7 +54,7 @@ class ChatMessage(ft.Row):
         # Define o conteúdo do CircleAvatar com base no usuário
         avatar_content = (
             ft.Image(
-                src="assets/chatbot.png",
+                src="assets/IAron.png",
                 fit=ft.ImageFit.COVER
             )
             if message.user_name == "IAron Agent"
