@@ -4,9 +4,7 @@ build_exe_options = {
     "packages": ["flet", "docx", "progressbar", "requests",
                  "openpyxl", "google.generativeai",
                  "win32com", "PyPDF2"],
-
-    "includes": ["atexit"],
-    "excludes": ["unittest"],
+    "excludes": ["unittest", "tkinter"],
     "include_files": ["assets/", "database/", "languages/", "artificial_intelligence/", "Systems/"]
 }
 
