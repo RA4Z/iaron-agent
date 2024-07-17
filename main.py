@@ -184,7 +184,7 @@ def main(page: ft.Page):
         nonlocal arquivos_carregados  # Modifica a lista externa
         if e.files is not None:
             arquivos_permitidos = [arquivo for arquivo in e.files
-                                   if arquivo.name.lower().endswith(('.docx', '.pdf', '.txt'))]
+                                   if arquivo.name.lower().endswith(('.docx', '.pdf', '.txt', '.xlsx', '.xlsm'))]
 
             if arquivos_permitidos:
                 arquivos_carregados.extend(arquivos_permitidos)  # Adiciona à lista
