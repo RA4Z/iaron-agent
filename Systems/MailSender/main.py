@@ -2,6 +2,7 @@ import json
 from Systems.MailSender.gemini import write_mail
 from Systems.MailSender.functions import Outlook
 
+
 def run_system(user_input):
     data = []
     inputs = json.load(open('Systems/MailSender/mail_templates.json', 'r', encoding='utf-8'))
@@ -9,8 +10,9 @@ def run_system(user_input):
         data.append(f"input: {value['input']}")
         data.append(f"output: {value['output']}")
 
-    response = write_mail(f'Escreva um E-mail formal baseado no texto a seguir: {user_input}. Escreva esse email '
-                          f'no idioma que foi escrito a mensagem', data).replace('`', '').replace('json', '').strip()
+    response = (write_mail(f'Escreva um E-mail formal baseado no texto a seguir: {user_input}. Escreva esse email '
+                           f'no idioma que foi escrito a mensagem, não me dê sugestões, apenas o resultado', data)
+                .replace('`', '').replace('json', '').strip())
     try:
         response = json.loads(response)
 

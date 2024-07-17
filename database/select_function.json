@@ -1,9 +1,5 @@
 [
     {
-        "input": "Faça esse passo a passo ser automatizado",
-        "output": "select_iaron_developer"
-    },
-    {
         "input": "Automatize isso",
         "output": "select_iaron_developer"
     },
@@ -12,13 +8,14 @@
         "output": "select_iaron_developer"
     },
     {
-        "input": "Analise o procedimento e então desenvolva um sistema automatizado",
+        "input": "Usando procedimento desenvolva um sistema automatizado",
         "output": "select_iaron_developer"
     },
     {
         "input": "Baseando-se no arquivo em anexo desenvolva uma automatização",
         "output": "select_iaron_developer"
     },
+
     {
         "input": "Título: Roteiro de Atrasos da Usinagem\nDescrição: Automatização do processo de verificação de itens atrasados da usinagem para alternadores\nSolicitado por: Nicolas Gabriel Massaia Camacho\nDesenvolvido por: Robert Aron Zimmermann\n\nObservações:\nSAP deve estar com o idioma PT selecionado\n\n\nProcedimento:\n\nTransação COHV\nInserir variante \"ATRASO GTA NIC\"\nEscrever no campo \"Layout\" o texto \"/USIN_ROTEI\"\nexecutar\nescrever tabela na planilha \"Roteiro.xlsm\" a partir da coluna 2\n\nEnviar E-mail para usuários que estão no bloco de notas chamado \"Destinatarios.txt\", estão separados por \";\"\nO título do E-mail deve ser \"Atrasos GTA\"\nNo corpo do E-mail deve estar escrito:\n“Bom dia,\nSegue atrasos GTA, gentileza informar motivo e entrega:”\nAbrir a planilha \"Roteiro.xlsm\" para visualização do usuário",
         "output": "select_iaron_dev_code"
@@ -51,6 +48,7 @@
         "input": "(Importar funções os e sys no começo do código) Acessar Transação CN47N, colocar o Elemento PEP \"120-2300964-21\", escolher o Layout \"/INI_ACABA\" e executar",
         "output": "select_iaron_dev_code"
     },
+
     {
         "input": "Usar o texto a seguir como base para um E-mail Bom dia Henrique/Daniel, tudo bem?\\nFavor computar as horas em Movimentação matéria prima / separação / alocação do material cortado...   deste primeiro lote de corte a laser, para que o pessoal da WTD possa inserir esta operação nas ordens no CT 02010002.\\nJoelson havia comentado em 0,5 min por peça...mas aguardo o valor oficial de vocês.\\nObrigada.",
         "output": "select_send_email"
@@ -84,6 +82,11 @@
         "output": "select_send_email"
     },
     {
+        "input": "De forma criativa e chamativa desenvolva um E-mail de despedida de 30 anos de empresa",
+        "output": "select_send_email"
+    },
+
+    {
         "input": "Como fazer o planejamento de Alternadores?",
         "output": "select_chatbot_ppc"
     },
@@ -106,5 +109,18 @@
     {
         "input": "Como apontar uma ordem?",
         "output": "select_chatbot_ppc"
+    },
+    {
+        "input": "Faça uma análise detalhada nos dados dessa planilha",
+        "output": "select_chatbot_ppc"
+    },
+    {
+        "input": "Analise esses dados",
+        "output": "select_chatbot_ppc"
+    },
+    {
+        "input": "Faça uma varredura nas informações em anexo",
+        "output": "select_chatbot_ppc"
     }
+
 ]

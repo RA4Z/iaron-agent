@@ -1,5 +1,6 @@
-import win32com.client
 import os
+import pythoncom
+import win32com.client
 
 
 def get_outlook_signature(mail):
@@ -13,6 +14,7 @@ def get_outlook_signature(mail):
 
 class Outlook:
     def __init__(self):
+        pythoncom.CoInitialize()
         self.outlook = win32com.client.Dispatch("Outlook.Application")
 
     def send_email(self, subject, to="", body="", cc="", bcc="", attachments=None, html_body_table=""):
