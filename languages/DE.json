@@ -1,0 +1,15 @@
+{
+    "welcome": "Willkommen!",
+    "file_upload": "Datei-Upload",
+    "select_language": "Sprache auswählen",
+
+    "write_prompt": "Schreiben Sie Ihre Aufforderung...",
+    "send_prompt": "Aufforderung senden",
+    "running": "Führe Funktion aus",
+    "join": "Chat beitreten",
+    "joined": "hat sich dem Chat angeschlossen.",
+    "blank": "Name darf nicht leer sein!",
+
+    "insert_name": "Geben Sie Ihren Namen ein, um dem Chat beizutreten",
+    "footer_text": "IAron Agent AI, Entwickelt und Prototypisiert von Robert Aron Zimmermann"
+}

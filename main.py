@@ -1,6 +1,16 @@
 import flet as ft
+import getpass
 from ai_caller import run_system, choose
 from upload_doc import extract_info
+from languages.translation import Language
+
+lang = Language()
+
+def change_language(language):
+    global lang
+    with open('languages/selected.txt', 'w', encoding='utf-8') as file:
+        file.write(language)
+    lang = Language()
 
 class Message:
     def __init__(self, user_name: str, text: str, message_type: str):
@@ -81,7 +91,7 @@ def main(page: ft.Page):
 
     def join_chat_click(e):
         if not join_user_name.value:
-            join_user_name.error_text = "Nome não pode ser em branco!"
+            join_user_name.error_text = lang.search('blank')
             join_user_name.update()
         else:
             page.session.set("user_name", join_user_name.value)
@@ -90,7 +100,7 @@ def main(page: ft.Page):
             page.pubsub.send_all(
                 Message(
                     user_name=join_user_name.value,
-                    text=f"{join_user_name.value} se juntou ao chat.",
+                    text=f"{join_user_name.value} {lang.search('joined')}",
                     message_type="login_message",
                 )
             )
@@ -120,7 +130,7 @@ def main(page: ft.Page):
                 page.pubsub.send_all(
                     Message(
                         "IAron Agent",
-                        f'Executando a função {response.strip()}...',
+                        f'{lang.search("running")} {response.strip()}...',
                         message_type="chat_message",
                     )
                 )
@@ -146,18 +156,18 @@ def main(page: ft.Page):
 
     page.pubsub.subscribe(on_message)
 
-    # A dialog asking for a user display name
     join_user_name = ft.TextField(
-        label="Insira seu nome para se juntar ao Chat",
+        label=lang.search('insert_name'),
+        value=getpass.getuser().capitalize(),
         autofocus=True,
         on_submit=join_chat_click,
     )
     page.dialog = ft.AlertDialog(
         open=True,
         modal=True,
-        title=ft.Text("Bem vindo(a)!"),
+        title=ft.Text(lang.search('welcome')),
         content=ft.Column([join_user_name], width=300, height=70, tight=True),
-        actions=[ft.ElevatedButton(text="Entrar no Chat", on_click=join_chat_click)],
+        actions=[ft.ElevatedButton(text=lang.search('join'), on_click=join_chat_click)],
         actions_alignment=ft.MainAxisAlignment.END,
     )
 
@@ -170,7 +180,7 @@ def main(page: ft.Page):
 
     # A new message entry form
     new_message = ft.TextField(
-        hint_text="Escreva seu Comando...",
+        hint_text=lang.search('write_prompt'),
         autofocus=True,
         shift_enter=True,
         min_lines=1,
@@ -181,22 +191,20 @@ def main(page: ft.Page):
     )
 
     def upload_arquivos(e: ft.FilePickerResultEvent):
-        nonlocal arquivos_carregados  # Modifica a lista externa
+        nonlocal arquivos_carregados
         if e.files is not None:
             arquivos_permitidos = [arquivo for arquivo in e.files
                                    if arquivo.name.lower().endswith(('.docx', '.pdf', '.txt', '.xlsx', '.xlsm'))]
 
             if arquivos_permitidos:
-                arquivos_carregados.extend(arquivos_permitidos)  # Adiciona à lista
+                arquivos_carregados.extend(arquivos_permitidos)
                 atualizar_lista_arquivos()
 
     def atualizar_lista_arquivos():
         row_arquivos.controls.clear()
         for i, arquivo in enumerate(arquivos_carregados):
-            # Cria um botão para cada arquivo
             botao_arquivo = ft.ElevatedButton(
                 text=arquivo.name,
-                # Remove o arquivo da lista quando o botão for clicado
                 on_click=lambda e, indice=i: remover_arquivo(indice)
             )
             row_arquivos.controls.append(botao_arquivo)
@@ -206,8 +214,39 @@ def main(page: ft.Page):
         del arquivos_carregados[indice]
         atualizar_lista_arquivos()
 
-    # Cria o ft.Row para exibir os arquivos
-    row_arquivos = ft.Row(wrap=True)  # Permite quebra de linha se necessário
+    def dropdown_changed(e):
+        change_language(lang_selector.value)
+        page.dialog.actions[0].text = lang.search('join')
+        page.dialog.title.value = lang.search('welcome')
+        join_user_name.label = lang.search('insert_name')
+        new_message.hint_text = lang.search('write_prompt')
+        upload_component.tooltip = lang.search('file_upload')
+        page.controls[2].controls[2].tooltip = lang.search('send_prompt')
+        page.controls[3].content.controls[1].value = lang.search('footer_text')
+        lang_selector.hint_text = lang.search('select_language')
+        page.update()
+
+    lang_selector = ft.Dropdown(
+        on_change=dropdown_changed,
+        hint_text=lang.search('select_language'),
+        options=[
+            ft.dropdown.Option("EN"),
+            ft.dropdown.Option("PT"),
+            ft.dropdown.Option("ES"),
+            ft.dropdown.Option("FR"),
+            ft.dropdown.Option("DE"),
+            ft.dropdown.Option("CN"),
+        ],
+        width=200,
+    )
+
+    row_arquivos = ft.Row(wrap=True)
+
+    upload_component = ft.IconButton(
+                    icon=ft.icons.UPLOAD_FILE,
+                    tooltip=lang.search('file_upload'),
+                    on_click=lambda _: file_picker.pick_files(allow_multiple=True),
+                )
 
     # Add everything to the page
     page.add(
@@ -221,15 +260,11 @@ def main(page: ft.Page):
         row_arquivos,
         ft.Row(
             [
-                ft.IconButton(
-                    icon=ft.icons.UPLOAD_FILE,
-                    tooltip="Upload de arquivo",
-                    on_click=lambda _: file_picker.pick_files(allow_multiple=True),
-                ),
+                upload_component,
                 new_message,
                 ft.IconButton(
                     icon=ft.icons.SEND_ROUNDED,
-                    tooltip="Enviar Comando",
+                    tooltip=lang.search('send_prompt'),
                     on_click=send_message_click,
                 ),
             ]
@@ -237,13 +272,14 @@ def main(page: ft.Page):
         ft.Container(
             content=ft.Row(
                 controls=[
-                    ft.Image(src="Systems/IAron/images/logo.png", width=100, height=50),
+                    ft.Image(src="assets/logo.png", width=100, height=50),
                     ft.Text(
-                        value='IAron Agent AI, Desenvolvido e Prototipado por Robert Aron Zimmermann',
+                        value=lang.search('footer_text'),
                         size=12,
                         weight=ft.FontWeight.NORMAL,
                         text_align=ft.TextAlign.CENTER,
                     ),
+                    lang_selector
                 ],
                 alignment=ft.MainAxisAlignment.CENTER,
             ),
