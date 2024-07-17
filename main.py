@@ -72,7 +72,7 @@ class ChatMessage(ft.Row):
             ),
             ft.Column(
                 [
-                    ft.Text(message.user_name, weight="bold"),
+                    ft.Text(message.user_name, weight=ft.FontWeight.BOLD),
                     ft.Markdown(
                         message.text,
                         selectable=True,
