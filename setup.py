@@ -14,11 +14,12 @@ build_exe_options = {
                  "pathspec", "patsy", "pep8", "pexpect", "pickleshare", "pillow", "pip", "pkginfo", "plotly", "pluggy",
                  "powershell_shortcut", "poyo", "prometheus_client", "prompt-toolkit", "protego", "protobuf",
                  "pure_eval", "flask"],
-    "include_files": ["assets/", "database/", "languages/", "artificial_intelligence/", "Systems/"]
+    "include_files": ["assets/", "database/", "languages/", "Systems/"]
 }
 
 target = Executable(
     script="main.py",
+    target_name="IAron Agent AI",
     base="Win32GUI",
     icon="assets/IAron.ico"
 )
