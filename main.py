@@ -115,6 +115,11 @@ def main(page: ft.Page):
 
         actual_message = new_message.value
         if new_message.value != "":
+            # Desabilita o campo new_message
+            new_message.disabled = True
+            upload_component.disabled = True
+            page.controls[2].controls[2].disabled = True
+
             page.pubsub.send_all(
                 Message(
                     page.session.get("user_name"),
@@ -123,7 +128,6 @@ def main(page: ft.Page):
                 )
             )
             new_message.value = ""
-            new_message.focus()
             page.update()
 
             response = run_system(actual_message)
@@ -145,6 +149,12 @@ def main(page: ft.Page):
                 )
             )
             page.update()
+
+            # Habilita o campo new_message após receber a resposta
+            new_message.disabled = False
+            upload_component.disabled = False
+            page.controls[2].controls[2].disabled = False
+            new_message.focus()
 
     def on_message(message: Message):
         global m
