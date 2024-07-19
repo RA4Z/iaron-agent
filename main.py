@@ -111,7 +111,7 @@ def main(page: ft.Page):
         file_prompt = ''
         if arquivos_carregados:
             for file in arquivos_carregados:
-                file_prompt = file_prompt + f"Dados do anexo {file.name}:\n {extract_info(file)}\nFim do Anexo\n======="
+                file_prompt = file_prompt + f"Dados do anexo {file}:\n {extract_info(file)}\nFim do Anexo\n======="
 
         actual_message = new_message.value
         if new_message.value != "":

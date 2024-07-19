@@ -22,7 +22,7 @@ def run_system(user_input):
 
     mail = Outlook()
     mail.send_email(subject=response['subject'], to=response['to'], cc=response['cc'], bcc=response['bcc'],
-                    body=response['body'])
+                    body=response['body'], attachments=response['attachments'])
 
     return f"Email com o título {response['subject']} criado com sucesso!"
 
