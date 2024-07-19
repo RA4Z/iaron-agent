@@ -5,13 +5,14 @@ import sys
 sys.setrecursionlimit(10**6)
 
 build_exe_options = {
-    "packages": ["flet", "docx", "progressbar", "requests", "openpyxl", "google.generativeai", "win32com", "PyPDF2"],
+    "packages": ["flet", "docx", "progressbar", "requests", "openpyxl", "google.generativeai", "win32com", "PyPDF2",
+                 "html2docx"],
     "excludes": ["unittest", "tkinter", "navigator-updater", "nbclassic", "nbclient", "nbconvert", "nbformat",
                  "networkx", "nltk", "nose", "notebook", "numba", "numexpr", "numpy", "numpy-base", "numpydoc",
                  "pandas", "pandocfilters", "panel", "param", "paramiko", "parsel", "parso", "partd",
                  "pathspec", "patsy", "pep8", "pexpect", "pickleshare", "pillow", "pkginfo", "plotly", "pluggy",
                  "powershell_shortcut", "poyo", "prometheus_client", "prompt-toolkit", "protego", "protobuf",
-                 "pure_eval", "flask"],
+                 "pure_eval", "flask", "weasyprint"],
     "include_files": ["assets/", "database/", "languages/", "Systems/"]
 }
 

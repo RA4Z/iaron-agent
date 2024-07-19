@@ -121,6 +121,25 @@
     {
         "input": "Faça uma varredura nas informações em anexo",
         "output": "select_chatbot_ppc"
+    },
+    {
+        "input": "Escreva um um documento retratando a situação do mundo",
+        "output": "select_create_docx"
+    },
+    {
+        "input": "Documento sobre o aquecimento global",
+        "output": "select_create_docx"
+    },
+    {
+        "input": "Crie um arquivo que fale sobre animais domésticos",
+        "output": "select_create_docx"
+    },
+    {
+        "input": "Tabela exibindo as maiores guerras do mundo",
+        "output": "select_create_docx"
+    },
+    {
+        "input": "Crie um documento ensionando a fazer uso de IAs Generativas",
+        "output": "select_create_docx"
     }
-
 ]

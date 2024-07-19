@@ -1,3 +1,5 @@
+import win32com.client
+import pythoncom
 import subprocess
 import requests
 import getpass
@@ -37,3 +39,17 @@ def select_chatbot_ppc(user_input: str):
 def select_send_email(user_input: str):
     from Systems.MailSender.main import run_system
     return run_system(user_input)
+
+def select_create_docx(user_input: str):
+    from Systems.GenerateDocx.main import run_system
+    response = run_system(user_input)
+    try:
+        pythoncom.CoInitialize()
+        word = win32com.client.Dispatch("Word.Application")
+        word.Documents.Open(response)
+        word.Visible = True
+
+    except Exception as e:
+        print(e)
+
+    return f'Documento criado com sucesso em {response}'

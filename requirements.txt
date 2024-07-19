@@ -1,0 +1,6 @@
+openpyxl~=3.0.9
+future~=0.18.2
+requests~=2.27.1
+xlwings~=0.24.9
+markdown~=3.3.4
+flet~=0.21.2
