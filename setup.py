@@ -6,7 +6,7 @@ sys.setrecursionlimit(10**6)
 
 build_exe_options = {
     "packages": ["flet", "docx", "progressbar", "requests", "openpyxl", "google.generativeai", "win32com", "PyPDF2",
-                 "html2docx"],
+                 "html2docx", "markdown", "xlwings"],
     "excludes": ["unittest", "tkinter", "navigator-updater", "nbclassic", "nbclient", "nbconvert", "nbformat",
                  "networkx", "nltk", "nose", "notebook", "numba", "numexpr", "numpy", "numpy-base", "numpydoc",
                  "pandas", "pandocfilters", "panel", "param", "paramiko", "parsel", "parso", "partd",
