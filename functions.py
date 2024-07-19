@@ -1,3 +1,4 @@
+from upload_doc import extract_docx
 import win32com.client
 import pythoncom
 import subprocess
@@ -53,3 +54,15 @@ def select_create_docx(user_input: str):
         print(e)
 
     return f'Documento criado com sucesso em {response}'
+
+def select_create_docx_and_send_email(user_input):
+    import Systems.GenerateDocx.main
+    file_path = Systems.GenerateDocx.main.run_system(f'{user_input} NÃO CITE O NOME DE QUEM RECEBERÁ O EMAIL, APENAS '
+                                                     f'GERE O TEXTO PARA O DOCUMENTO').replace('\\', '/')
+    try:
+        user_input = f"{user_input}\n Dados do anexo {file_path}:\n {extract_docx(file_path)}"
+
+    except Exception as e:
+        print(e)
+
+    return select_send_email(user_input)

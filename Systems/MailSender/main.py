@@ -10,7 +10,9 @@ def run_system(user_input):
         data.append(f"input: {value['input']}")
         data.append(f"output: {value['output']}")
 
-    response = (write_mail(f'Escreva um E-mail formal baseado no texto a seguir: {user_input}. Escreva esse email '
+    response = (write_mail(f'Escreva um E-mail formal baseado no texto a seguir: {user_input}. SEMPRE ESCREVA UM'
+                           f'EMAIL COMPLETO USANDO COMO BASE O ASSUNTO.'
+                           f'Escreva esse email '
                            f'no idioma que foi escrito a mensagem, não me dê sugestões, apenas o resultado', data)
                 .replace('`', '').replace('json', '').strip())
     try:

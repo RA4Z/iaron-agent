@@ -141,5 +141,25 @@
     {
         "input": "Crie um documento ensionando a fazer uso de IAs Generativas",
         "output": "select_create_docx"
+    },
+    {
+        "input": "Crie um documento detalhando as guerras mundiais e o envie por email para Robert Aron Zimmermann",
+        "output": "select_create_docx_and_send_email"
+    },
+    {
+        "input": "Criar arquivo sobre conteúdo em anexo e enviar por email",
+        "output": "select_create_docx_and_send_email"
+    },
+    {
+        "input": "Enviar por email documento sobre o sistema SAP",
+        "output": "select_create_docx_and_send_email"
+    },
+    {
+        "input": "Usar o texto em anexo para desenvolver um documento e disparar por email",
+        "output": "select_create_docx_and_send_email"
+    },
+    {
+        "input": "Email sobre o planeta terra com documento sobre o universo em anexo",
+        "output": "select_create_docx_and_send_email"
     }
 ]

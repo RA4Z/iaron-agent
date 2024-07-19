@@ -12,7 +12,8 @@ def run_system(user_input: str):
         data.append(f"input: {value['input']}")
         data.append(f"output: {value['output']}")
 
-    response = (write_docx(f'Escreva um Documento formal baseado no texto a seguir: {user_input}. Escreva  '
+    response = (write_docx(f'Escreva um Documento baseado no texto a seguir: {user_input}. SEMPRE ESCREVA UM'
+                           f'DOCUMENTO COMPLETO USANDO COMO BASE O ASSUNTO. Escreva  '
                            f'no idioma que foi escrito a mensagem, não me dê sugestões, apenas o resultado. Entregue a '
                            f'resposta exatamente no mesmo padrão que está no histórico de conversas', data))
 
