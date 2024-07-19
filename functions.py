@@ -65,4 +65,7 @@ def select_create_docx_and_send_email(user_input):
     except Exception as e:
         print(e)
 
-    return select_send_email(user_input)
+    return select_send_email(f'{user_input} FAÇA UM BREVE RESUMO DESSE TEXTO PARA SER UTILIZADO NO CORPO DO EMAIL, '
+                             f'QUERO QUE SEJA ALGO QUE FAÇA COM QUE A PESSOA QUE ESTÁ RECEBENDO O EMAIL SINTA VONTADE '
+                             f'DE ABRIR O DOCUMENTO EM ANEXO. PARA O CORPO DO EMAIL FAÇA UM CÓDIGO HTML BONITO, '
+                             f'ATRAENTE E CHAMATIVO')
