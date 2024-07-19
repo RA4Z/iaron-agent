@@ -21,6 +21,21 @@ def select_iaron_dev_code(user_input: str):
         subprocess.run(['python', f'{response}/main.py'], check=True)
         return f'Arquivo criado com sucesso em {response}'
 
+def reset_chatbot_chat():
+    try:
+        url = 'http://10.1.43.63:5000/quit'
+        data = {
+            'username': getpass.getuser()
+        }
+        response = requests.post(url, data=data)
+
+        if response.status_code == 200:
+            return response.text
+        else:
+            return f'Ocorreu o erro: {response.status_code}!'
+    except Exception as e:
+        return f'Ocorreu o erro {e}!'
+
 def select_chatbot_ppc(user_input: str):
     try:
         url = 'http://10.1.43.63:5000/gemini'
@@ -69,3 +84,6 @@ def select_create_docx_and_send_email(user_input):
                              f'QUERO QUE SEJA ALGO QUE FAÇA COM QUE A PESSOA QUE ESTÁ RECEBENDO O EMAIL SINTA VONTADE '
                              f'DE ABRIR O DOCUMENTO EM ANEXO. PARA O CORPO DO EMAIL FAÇA UM CÓDIGO HTML BONITO, '
                              f'ATRAENTE E CHAMATIVO')
+
+
+reset_chatbot_chat()
