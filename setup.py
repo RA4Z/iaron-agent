@@ -13,7 +13,7 @@ build_exe_options = {
                  "pathspec", "patsy", "pep8", "pexpect", "pickleshare", "pillow", "pkginfo", "plotly", "pluggy",
                  "powershell_shortcut", "poyo", "prometheus_client", "prompt-toolkit", "protego", "protobuf",
                  "pure_eval", "flask", "weasyprint"],
-    "include_files": ["assets/", "database/", "languages/", "Systems/"]
+    "include_files": ["assets/", "database/", "languages/", "development"]
 }
 
 target = Executable(
