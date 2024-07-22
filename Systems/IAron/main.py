@@ -8,7 +8,7 @@ lang = Language()
 
 def change_language(language):
     global lang
-    with open('Systems/IAron/languages/selected.txt', 'w', encoding='utf-8') as file:
+    with open('languages/selected.txt', 'w', encoding='utf-8') as file:
         file.write(language)
     lang = Language()
 
@@ -116,7 +116,7 @@ def main(page: ft.Page):
     footer_panel = ft.Container(
         content=ft.Row(
             controls=[
-                ft.Image(src="Systems/IAron/images/logo.png", width=100, height=50),
+                ft.Image(src="assets/logo.png", width=100, height=50),
                 ft.Text(
                     value=lang.search('creator'),
                     size=12,

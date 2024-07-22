@@ -19,7 +19,7 @@ def run_automation(user_input: str):
             documentation = pegar_texto_externo(output)
             file = f"script {time.strftime('%d_%m_%y_%H-%M-%S', time.localtime())}"
 
-            origem = "Systems/IAron/script"
+            origem = "development/script"
             destino = f"C:\\IAron\\{file}"
             copiar_pasta(origem, destino)
 

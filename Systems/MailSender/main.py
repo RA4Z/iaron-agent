@@ -5,7 +5,7 @@ from Systems.MailSender.functions import Outlook
 
 def run_system(user_input):
     data = []
-    inputs = json.load(open('Systems/MailSender/mail_templates.json', 'r', encoding='utf-8'))
+    inputs = json.load(open('database/mail_templates.json', 'r', encoding='utf-8'))
     for value in inputs:
         data.append(f"input: {value['input']}")
         data.append(f"output: {value['output']}")

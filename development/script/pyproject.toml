@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "raz-automation"
+version = "0.1.0"
+description = ""
+authors = ["Robert Aron Zimmermann <robertn@weg.net>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pywin32 = "^306"
+openpyxl = "3.0.9"
+pyautogui = "0.9.54"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
