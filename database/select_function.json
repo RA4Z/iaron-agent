@@ -161,5 +161,29 @@
     {
         "input": "Email sobre o planeta terra com documento sobre o universo em anexo",
         "output": "select_create_docx_and_send_email"
+    },
+    {
+        "input": "Fazer varredura de arquivos na pasta C:\\Dell",
+        "output": "select_folder_scan"
+    },
+    {
+        "input": "Analisar todos os arquivos localizados em C:\\Users\\robertn\\AppData\\Roaming\\SAP\\SAP GUI\\Scripts",
+        "output": "select_folder_scan"
+    },
+    {
+        "input": "Verificar erros em Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP",
+        "output": "select_folder_scan"
+    },
+    {
+        "input": "Escrever em um documento todos os dados de C:\\Users\\robertn\\Pictures\\Camera Roll",
+        "output": "select_folder_scan"
+    },
+    {
+        "input": "Resumir informações no caminho Q:\\GROUPS\\WEN_JGS_SUPRIMENTOS\\Compartilhado ComprasPCP",
+        "output": "select_folder_scan"
+    },
+    {
+        "input": "Faça uma varredura aqui C:\\IAron\\script 19_07_24_14-05-40\\",
+        "output": "select_folder_scan"
     }
 ]
