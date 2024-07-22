@@ -168,6 +168,10 @@
         "input": "Email sobre o planeta terra com documento sobre o universo em anexo",
         "output": "select_create_docx_and_send_email"
     },
+    {
+        "input": "Crie um email detalhando de forma aprimorada o procedimento a seguir: Acessar transação ZTPP107 Inserir variante /PS Executar Anexar resultado no corpo do E-mail enviar para robertn@weg.net",
+        "output": "select_create_docx_and_send_email"
+    },
 
     {
         "input": "Fazer varredura de arquivos na pasta C:\\Dell",
@@ -195,6 +199,18 @@
     },
     {
         "input": "Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\MacrosMadrugada\\011-Estoque_Programacao\\ verifique o conte´pud-o aqui",
+        "output": "select_folder_scan"
+    },
+    {
+        "input": "C:\\Users\\robertn\\Documents\\Projetos\\PYTHON\\ppc-agent\\database",
+        "output": "select_folder_scan"
+    },
+    {
+        "input": "https://intranet.weg.net/br/energia-wm/pcp/SiteAssets/Arquivos\\ analise os arquivos dentro dessa pasta",
+        "output": "select_folder_scan"
+    },
+    {
+        "input": "C:\\Users\\robertn\\Documents\\Projetos\\PYTHON\\ppc-agent\\database\\",
         "output": "select_folder_scan"
     }
 ]

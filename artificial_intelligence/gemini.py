@@ -41,6 +41,7 @@ def decidir_tarefa(prompt: str, data):
     response = model.generate_content([
         f"""Minha tarefa é sempre dizer qual a melhor função a ser realizada de acordo com o input do usuário;
         Quando não tiver certeza de qual a melhor função, ou o input do usuário for inválido, vago ou em branco, 
+        Minha resposta SEMPRE SERÁ SOMENTE O NOME DA FUNÇÃO INDEPENDENTE DO QUE ACONTECER
         então minha resposta será "select_chatbot_ppc" """,
         "\n".join(data),
         f"input: {prompt}",
