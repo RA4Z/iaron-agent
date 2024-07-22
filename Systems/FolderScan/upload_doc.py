@@ -1,4 +1,5 @@
 import PyPDF2
+import json
 from docx import Document
 from excel import ExcelHandler
 
@@ -72,6 +73,9 @@ def extract_pdf(filename: str):
 
     return all_text
 
+def extract_json(filename: str):
+    return json.load(open(filename, 'r', encoding='utf-8'))
+
 def extract_info(file):  # Corrigido: recebe FilePickerFile
     if file.endswith(".docx"):  # Acessa o nome usando file.name
         return extract_docx(file)  # Passa o caminho do arquivo para extract_docx
@@ -84,5 +88,8 @@ def extract_info(file):  # Corrigido: recebe FilePickerFile
 
     if file.endswith((".xlsx", "xlsm")):  # Acessa o nome usando file.name
         return extract_excel(file)  # Passa o caminho do arquivo para extract_excel
+
+    if file.endswith(".json"):  # Acessa o nome usando file.name
+        return extract_json(file)  # Passa o caminho do arquivo para extract_json
 
     return ''

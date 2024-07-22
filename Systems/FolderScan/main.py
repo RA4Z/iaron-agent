@@ -12,7 +12,7 @@ def run_system(user_input: str):
 
     resultado_windows = re.search(padrao_windows, user_input)
     resultado_url = re.search(padrao_url, user_input)
-
+    print(user_input)
     if resultado_windows:
         pasta = resultado_windows.group(0)
     elif resultado_url:
