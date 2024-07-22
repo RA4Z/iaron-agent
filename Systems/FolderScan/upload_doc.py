@@ -77,19 +77,23 @@ def extract_json(filename: str):
     return json.load(open(filename, 'r', encoding='utf-8'))
 
 def extract_info(file):  # Corrigido: recebe FilePickerFile
-    if file.endswith(".docx"):  # Acessa o nome usando file.name
-        return extract_docx(file)  # Passa o caminho do arquivo para extract_docx
+    try:
+        if file.endswith(".docx"):  # Acessa o nome usando file.name
+            return extract_docx(file)  # Passa o caminho do arquivo para extract_docx
 
-    if file.endswith(".pdf"):  # Acessa o nome usando file.name
-        return extract_pdf(file)  # Passa o caminho do arquivo para extract_pdf
+        if file.endswith(".pdf"):  # Acessa o nome usando file.name
+            return extract_pdf(file)  # Passa o caminho do arquivo para extract_pdf
 
-    if file.endswith((".txt", ".py", ".md", ".log")):  # Acessa o nome usando file.name
-        return extract_txt(file)  # Passa o caminho do arquivo para extract_txt
+        if file.endswith((".txt", ".py", ".md", ".log")):  # Acessa o nome usando file.name
+            return extract_txt(file)  # Passa o caminho do arquivo para extract_txt
 
-    if file.endswith((".xlsx", "xlsm")):  # Acessa o nome usando file.name
-        return extract_excel(file)  # Passa o caminho do arquivo para extract_excel
+        if file.endswith((".xlsx", "xlsm")):  # Acessa o nome usando file.name
+            return extract_excel(file)  # Passa o caminho do arquivo para extract_excel
 
-    if file.endswith(".json"):  # Acessa o nome usando file.name
-        return extract_json(file)  # Passa o caminho do arquivo para extract_json
+        if file.endswith(".json"):  # Acessa o nome usando file.name
+            return extract_json(file)  # Passa o caminho do arquivo para extract_json
+
+    except Exception as e:
+        print(f'Ocorreu o erro {str(e)}')
 
     return ''

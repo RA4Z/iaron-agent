@@ -12,7 +12,6 @@ def run_system(user_input: str):
 
     resultado_windows = re.search(padrao_windows, user_input)
     resultado_url = re.search(padrao_url, user_input)
-    print(user_input)
     if resultado_windows:
         pasta = resultado_windows.group(0)
     elif resultado_url:
@@ -22,9 +21,9 @@ def run_system(user_input: str):
 
     pasta = pasta.replace('https://intranet.weg.net', '\\\\intranet.weg.net@SSL\\DavWWWRoot')
     pasta = os.path.dirname(pasta.replace('\\', '/').replace('%20', ' '))
-    print(pasta)
     if os.path.exists(pasta):
         for nome_arquivo in os.listdir(pasta):
+            print(nome_arquivo)
             caminho_completo = os.path.join(pasta, nome_arquivo)
             info = extract_info(caminho_completo)
             if info != '':
