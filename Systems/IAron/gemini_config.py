@@ -1,6 +1,6 @@
 import google.generativeai as genai
 from Systems.IAron.gemini_data import data, data_inputs
-from Systems.IAron.language_translation import Language
+from languages.translation import Language
 import os
 
 genai.configure(api_key=os.environ['GEMINI_API_KEY'])
@@ -42,7 +42,7 @@ model = genai.GenerativeModel(
 def develop_input(prompt: str):
     lang = Language()
     response = model.generate_content([
-        f"""Minhas respostas sempre serão no idioma {lang.search('idioma')}. 
+        f"""Minhas respostas sempre serão no idioma {lang.search('language')}. 
     Irei converter meu input em uma forma legível e acrescentarei detalhes cruciais sobre o fluxo do procedimento, 
     facilitando o passo a passo para desenvolvimento futuro, irei citar com detalhes onde o código deve clicar ou o que 
     deve fazer em cada etapa, focando no melhor desempenho e na melhor legibilidade.
@@ -59,7 +59,7 @@ def develop_input(prompt: str):
 def develop_code(prompt: str):
     lang = Language()
     response = model.generate_content([
-        f"""Sempre irei criar o código em Python e entregar uma documentação sobre o código em {lang.search('idioma')}. 
+        f"""Sempre irei criar o código em Python e entregar uma documentação sobre o código em {lang.search('language')}. 
   ao terminar de escrever o código eu irei escrever "----fimpython----",
   Todo código que eu criar a primeira linha será: # Default model for SAP automations, developed by Robert Aron 
   Zimmermann, using Google AI Studio tuned prompt model;

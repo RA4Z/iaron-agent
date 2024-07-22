@@ -5,7 +5,7 @@ import re
 import openpyxl
 import xlwings as xw
 from docx import Document
-from Systems.IAron.language_translation import Language
+from languages.translation import Language
 
 
 def retornar_codigo(texto: str):
