@@ -79,7 +79,7 @@ def extract_info(file):  # Corrigido: recebe FilePickerFile
     if file.endswith(".pdf"):  # Acessa o nome usando file.name
         return extract_pdf(file)  # Passa o caminho do arquivo para extract_pdf
 
-    if file.endswith((".txt", ".py", ".md")):  # Acessa o nome usando file.name
+    if file.endswith((".txt", ".py", ".md", ".log")):  # Acessa o nome usando file.name
         return extract_txt(file)  # Passa o caminho do arquivo para extract_txt
 
     if file.endswith((".xlsx", "xlsm")):  # Acessa o nome usando file.name

@@ -122,6 +122,7 @@
         "input": "Faça uma varredura nas informações em anexo",
         "output": "select_chatbot_ppc"
     },
+
     {
         "input": "Escreva um um documento retratando a situação do mundo",
         "output": "select_create_docx"
@@ -142,6 +143,7 @@
         "input": "Crie um documento ensionando a fazer uso de IAs Generativas",
         "output": "select_create_docx"
     },
+
     {
         "input": "Crie um documento detalhando as guerras mundiais e o envie por email para Robert Aron Zimmermann",
         "output": "select_create_docx_and_send_email"
@@ -162,6 +164,7 @@
         "input": "Email sobre o planeta terra com documento sobre o universo em anexo",
         "output": "select_create_docx_and_send_email"
     },
+
     {
         "input": "Fazer varredura de arquivos na pasta C:\\Dell",
         "output": "select_folder_scan"
@@ -184,6 +187,10 @@
     },
     {
         "input": "Faça uma varredura aqui C:\\IAron\\script 19_07_24_14-05-40\\",
+        "output": "select_folder_scan"
+    },
+    {
+        "input": "Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\MacrosMadrugada\\011-Estoque_Programacao\\ verifique o conte´pud-o aqui",
         "output": "select_folder_scan"
     }
 ]
