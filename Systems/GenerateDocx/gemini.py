@@ -1,6 +1,10 @@
 import google.generativeai as genai
 import os
 
+from languages.translation import Language
+
+lang = Language()
+
 genai.configure(api_key=os.environ['GEMINI_API_KEY'])
 
 generation_config = {
@@ -42,7 +46,8 @@ def write_docx(prompt: str, data):
         f"""Minha tarefa é escrever textos para documentos word, minhas respostas sempre terão o título do documento e o 
         texto do documento, sempre irei escrever de forma extensa qualquer texto que o usuário pedir para mim. Irei
         seguir o modelo de resposta que está no meu histórico de conversas
-        NÃO POSSO ACRESCENTAR OBSERVAÇÕES NEM NADA DO TIPO EM MEUS OUTPUTS""",
+        NÃO POSSO ACRESCENTAR OBSERVAÇÕES NEM NADA DO TIPO EM MEUS OUTPUTS por padrão minhas respostas serão em 
+        {lang.search('Language')}""",
         "\n".join(data),
         f"input: {prompt}",
         "output: "

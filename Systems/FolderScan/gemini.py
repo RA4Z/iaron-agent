@@ -1,6 +1,10 @@
 import google.generativeai as genai
 import os
 
+from languages.translation import Language
+
+lang = Language()
+
 genai.configure(api_key=os.environ['GEMINI_API_KEY'])
 
 generation_config = {
@@ -40,7 +44,8 @@ model = genai.GenerativeModel(
 def scan_files(prompt: str):
     response = model.generate_content([
         f"""Minha tarefa é fazer a varredura de dados dentro de arquivos em pastas de documentos, irei analisar o 
-        conteúdo de cada um dos arquivos e irei entregar uma análise profunda sobre o conteúdo de cada um deles""",
+        conteúdo de cada um dos arquivos e irei entregar uma análise profunda sobre o conteúdo de cada um deles 
+        por padrão minhas respostas serão em {lang.search('Language')}""",
         f"input: {prompt}",
         "output: "
     ])

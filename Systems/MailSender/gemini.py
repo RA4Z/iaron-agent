@@ -1,5 +1,8 @@
 import google.generativeai as genai
 import os
+from languages.translation import Language
+
+lang = Language()
 
 genai.configure(api_key=os.environ['GEMINI_API_KEY'])
 
@@ -42,7 +45,8 @@ def write_mail(prompt: str, data):
         f"""Minha tarefa é escrever textos formais para E-mail, esses E-mails sempre serão para pessoas que estão na
         empresa WEG, minhas respostas sempre serão somente um objeto JSON o corpo do E-mail será em HTML e sempre será 
         estilizado de forma atraente e extremamente profissional. NUNCA irei mudar a cor de background do Email
-        NÃO POSSO ACRESCENTAR OBSERVAÇÕES NEM NADA DO TIPO EM MEUS OUTPUTS""",
+        NÃO POSSO ACRESCENTAR OBSERVAÇÕES NEM NADA DO TIPO EM MEUS OUTPUTS, por padrão minhas respostas serão em 
+        {lang.search('Language')}""",
         "\n".join(data),
         f"input: {prompt}",
         "output: "

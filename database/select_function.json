@@ -85,6 +85,10 @@
         "input": "De forma criativa e chamativa desenvolva um E-mail de despedida de 30 anos de empresa",
         "output": "select_send_email"
     },
+    {
+        "input": "write an email about the heat during the summer in chinese",
+        "output": "select_send_email"
+    },
 
     {
         "input": "Como fazer o planejamento de Alternadores?",

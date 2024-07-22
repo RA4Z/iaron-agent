@@ -11,5 +11,6 @@
     "blank": "姓名不能为空！",
 
     "insert_name": "输入您的姓名加入聊天",
-    "footer_text": "IAron Agent AI，由 Robert Aron Zimmermann 开发和原型设计"
+    "footer_text": "IAron Agent AI，由 Robert Aron Zimmermann 开发和原型设计",
+    "language": "Chinês"
 }

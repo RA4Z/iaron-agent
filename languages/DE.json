@@ -11,5 +11,6 @@
     "blank": "Name darf nicht leer sein!",
 
     "insert_name": "Geben Sie Ihren Namen ein, um dem Chat beizutreten",
-    "footer_text": "IAron Agent AI, Entwickelt und Prototypisiert von Robert Aron Zimmermann"
+    "footer_text": "IAron Agent AI, Entwickelt und Prototypisiert von Robert Aron Zimmermann",
+    "language": "Alemão"
 }

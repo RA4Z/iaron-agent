@@ -264,6 +264,7 @@ def main(page: ft.Page):
             ft.dropdown.Option("ES"),
             ft.dropdown.Option("FR"),
             ft.dropdown.Option("DE"),
+            ft.dropdown.Option("CN"),
         ],
         width=200,
     )

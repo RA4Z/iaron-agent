@@ -4,7 +4,7 @@ import getpass
 class Language:
     def __init__(self):
         self.language = open('languages/selected.txt', 'r').readline().strip()
-        if self.language not in 'DE, EN, ES, FR, PT':
+        if self.language not in 'DE, EN, ES, FR, PT, CN':
             self.language = 'EN'
         with open(f'languages/{self.language}.json', 'r', encoding='utf-8') as file:
             self.translations = json.load(file)
