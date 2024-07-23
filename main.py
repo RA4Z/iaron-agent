@@ -119,36 +119,38 @@ def main(page: ft.Page):
             new_message.disabled = True
             upload_component.disabled = True
             page.controls[2].controls[2].disabled = True
-
-            page.pubsub.send_all(
-                Message(
-                    page.session.get("user_name"),
-                    f'{new_message.value.strip()}',
-                    message_type="chat_message",
+            try:
+                page.pubsub.send_all(
+                    Message(
+                        page.session.get("user_name"),
+                        f'{new_message.value.strip()}',
+                        message_type="chat_message",
+                    )
                 )
-            )
-            new_message.value = ""
-            page.update()
+                new_message.value = ""
+                page.update()
 
-            response = run_system(actual_message)
-            if "select_chatbot_ppc" not in response:
+                response = run_system(actual_message)
+                if "select_chatbot_ppc" not in response:
+                    page.pubsub.send_all(
+                        Message(
+                            "IAron Agent",
+                            f'{lang.search("running")} {response.strip()}...',
+                            message_type="chat_message",
+                        )
+                    )
+                    page.update()
+
                 page.pubsub.send_all(
                     Message(
                         "IAron Agent",
-                        f'{lang.search("running")} {response.strip()}...',
+                        f'{choose(response, f"{actual_message} {file_prompt}").strip()}',
                         message_type="chat_message",
                     )
                 )
                 page.update()
-
-            page.pubsub.send_all(
-                Message(
-                    "IAron Agent",
-                    f'{choose(response, f"{actual_message} {file_prompt}").strip()}',
-                    message_type="chat_message",
-                )
-            )
-            page.update()
+            except Exception as e:
+                print(f'Ocorreu o erro {str(e)}')
 
             # Habilita o campo new_message após receber a resposta
             new_message.disabled = False
