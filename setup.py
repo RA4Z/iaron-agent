@@ -12,7 +12,7 @@ build_exe_options = {
                  "pandas", "pandocfilters", "panel", "param", "paramiko", "parsel", "parso", "partd",
                  "pathspec", "patsy", "pep8", "pexpect", "pickleshare", "pillow", "pkginfo", "plotly", "pluggy",
                  "powershell_shortcut", "poyo", "prometheus_client", "prompt-toolkit", "protego", "protobuf",
-                 "pure_eval", "flask", "weasyprint"],
+                 "pure_eval", "flask", "weasyprint", "uvicor", "pyqtwebengine", "pywinpty", "pyqt5"],
     "include_files": ["assets/", "database/", "languages/", "development"]
 }
 
