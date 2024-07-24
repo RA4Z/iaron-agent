@@ -82,3 +82,7 @@ def select_create_docx_and_send_email(user_input):
                              f'QUERO QUE SEJA ALGO QUE FAÇA COM QUE A PESSOA QUE ESTÁ RECEBENDO O EMAIL SINTA VONTADE '
                              f'DE ABRIR O DOCUMENTO EM ANEXO. PARA O CORPO DO EMAIL FAÇA UM CÓDIGO HTML BONITO, '
                              f'ATRAENTE E CHAMATIVO')
+
+def select_excel_macro(user_input):
+    from Systems.ExcelMacros.main import run_system
+    return run_system(user_input)

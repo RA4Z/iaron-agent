@@ -1,0 +1,38 @@
+[
+    {
+        "input": "Executar a função Home.chamarTudo da planilha Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\Robert\\Arquivos\\AbrirSAP.xlsm",
+        "output": "{\"worksheet\": \"Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\Robert\\Arquivos\\AbrirSAP.xlsm\", \"script\": \"Home.chamarTudo\"}"
+    },
+    {
+        "input": "Rodar a macro da planilha Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\Central\\00-Planilha_Padrão\\v1.6_Default.xlsm",
+        "output": "{\"worksheet\": \"Rodar a macro da planilha Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\Central\\00-Planilha_Padrão\\v1.6_Default.xlsm\", \"script\": \"md_main.main\"}"
+    },
+    {
+        "input": "Função md_main.executar da planilha Macro_Workflow.xlsm da pasta Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\MacrosMadrugada\\008-CaixaWorkflow",
+        "output": "{\"worksheet\": \"Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\MacrosMadrugada\\008-CaixaWorkflow\\Macro_Workflow.xlsm\", \"script\": \"md_main.executar\"}"
+    },
+    {
+        "input": "Fazer ampliação na planilha Ampliar_Materiais em Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\MacrosMadrugada\\016-Macros_Ampliar\\",
+        "output": "{\"worksheet\": \"Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\MacrosMadrugada\\016-Macros_Ampliar\\Ampliar_Materiais.xlsm\", \"script\": \"md_main.main\"}"
+    },
+    {
+        "input": "Execute a macro Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\Processos com Automatização\\57 - Kanban Usinagem\\ACOMPANHAMENTO_PRODUÇÃO_USI_LEVE_v2.xlsm para mim",
+        "output": "{\"worksheet\": \"Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\Processos com Automatização\\57 - Kanban Usinagem\\ACOMPANHAMENTO_PRODUÇÃO_USI_LEVE_v2.xlsm\", \"script\": \"md_main.main\"}"
+    },
+    {
+        "input": "Usando a planilha PCR_MOD_WEN_ZTPCR004 em Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\Processos com Automatização\\A017 - Email PCR execute a função Main.principal",
+        "output": "{\"worksheet\": \"Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\Processos com Automatização\\A017 - Email PCR\\PCR_MOD_WEN_ZTPCR004.xlsm\", \"script\": \"Main.principal\"}"
+    },
+    {
+        "input": "Rodar Main.chamarTudo no arquivo Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\Processos com Automatização\\A027 - Atualizar CRP\\CRP.xlsm",
+        "output": "{\"worksheet\": \"Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\Processos com Automatização\\A027 - Atualizar CRP\\CRP.xlsm\", \"script\": \"Main.chamarTudo\"}"
+    },
+    {
+        "input": "Atualizar os dados da planilha do CRP",
+        "output": "{\"worksheet\": \"Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\Processos com Automatização\\A027 - Atualizar CRP\\CRP.xlsm\", \"script\": \"Main.chamarTudo\"}"
+    },
+    {
+        "input": "Executar o Acompanhamento Diário Kanbam 1200 (Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\Acompanhamento Diario Kanbam\\acompanhamento_diario_1200.xlsm)",
+        "output": "{\"worksheet\": \"Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\Acompanhamento Diario Kanbam\\acompanhamento_diario_1200.xlsm\", \"script\": \"md_main.main\"}"
+    }
+]

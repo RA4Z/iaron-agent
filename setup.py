@@ -9,7 +9,7 @@ build_exe_options = {
                  "html2docx", "markdown", "xlwings"],
     "excludes": ["unittest", "tkinter", "navigator-updater", "nbclassic", "nbclient", "nbconvert", "nbformat",
                  "networkx", "nltk", "nose", "notebook", "numba", "numexpr", "numpy", "numpy-base", "numpydoc",
-                 "pandas", "pandocfilters", "panel", "param", "paramiko", "parsel", "parso", "partd",
+                 "pandas", "pandocfilters", "panel", "param", "paramiko", "parsel", "parso", "partd", "pywhatkit",
                  "pathspec", "patsy", "pep8", "pexpect", "pickleshare", "pillow", "pkginfo", "plotly", "pluggy",
                  "powershell_shortcut", "poyo", "prometheus_client", "prompt-toolkit", "protego", "protobuf",
                  "pure_eval", "flask", "weasyprint", "uvicor", "pyqtwebengine", "pywinpty", "pyqt5", "urlopen", "nltk"],

@@ -212,5 +212,42 @@
     {
         "input": "C:\\Users\\robertn\\Documents\\Projetos\\PYTHON\\ppc-agent\\database\\",
         "output": "select_folder_scan"
+    },
+
+    {
+        "input": "Executar a função Home.chamarTudo da planilha Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\Robert\\Arquivos\\AbrirSAP.xlsm",
+        "output": "select_excel_macro"
+    },
+    {
+        "input": "Rodar a macro da planilha Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\Central\\00-Planilha_Padrão\\v1.6_Default.xlsm",
+        "output": "select_excel_macro"
+    },
+    {
+        "input": "Função md_main.executar da planilha Macro_Workflow.xlsm da pasta Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\MacrosMadrugada\\008-CaixaWorkflow",
+        "output": "select_excel_macro"
+    },
+    {
+        "input": "Fazer ampliação na planilha Ampliar_Materiais em Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\MacrosMadrugada\\016-Macros_Ampliar\\",
+        "output": "select_excel_macro"
+    },
+    {
+        "input": "Execute a macro Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\Processos com Automatização\\57 - Kanban Usinagem\\ACOMPANHAMENTO_PRODUÇÃO_USI_LEVE_v2.xlsm para mim",
+        "output": "select_excel_macro"
+    },
+    {
+        "input": "Usando a planilha PCR_MOD_WEN_ZTPCR004 em Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\Processos com Automatização\\A017 - Email PCR execute a função Main.principal",
+        "output": "select_excel_macro"
+    },
+    {
+        "input": "Rodar Main.chamarTudo no arquivo Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\Processos com Automatização\\A027 - Atualizar CRP\\CRP.xlsm",
+        "output": "select_excel_macro"
+    },
+    {
+        "input": "Atualizar os dados da planilha do CRP",
+        "output": "select_excel_macro"
+    },
+    {
+        "input": "Executar o Acompanhamento Diário Kanbam 1200 (Q:\\GROUPS\\BR_SC_JGS_WM_LOGISTICA\\PCP\\Acompanhamento Diario Kanbam\\acompanhamento_diario_1200.xlsm)",
+        "output": "select_excel_macro"
     }
 ]
